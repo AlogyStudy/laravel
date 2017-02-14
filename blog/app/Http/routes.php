@@ -16,8 +16,8 @@
    // return view('welcome');
 // });
 
-Route::get('/', 'IndexController@index');
 
+Route::get('/', 'IndexController@index');
 
 /*
 |--------------------------------------------------------------------------
@@ -25,11 +25,13 @@ Route::get('/', 'IndexController@index');
 |--------------------------------------------------------------------------
 | 
 */
-
-Route::group(['prefix' => 'admin'], function() {
-	Route::get('login', 'Admin\LoginController@login');
-	Route::post('checkLogin', 'Admin\LoginController@checkLogin');
+Route::group(['middleware' => ['web']], function () {
+    Route::group(['prefix' => 'admin'], function() {
+        Route::any('login', 'Admin\LoginController@login');
+        Route::get('code', 'Admin\LoginController@code');
+    });
 });
+
 
 /*
 |--------------------------------------------------------------------------

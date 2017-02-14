@@ -12,7 +12,7 @@ class IndexController extends Controller{
 	
     //
     public function index() {
-    	echo 123;
+    	return view('index');
     }
 		
 		public function test() {
