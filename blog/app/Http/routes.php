@@ -11,26 +11,27 @@
 |
 */
 
-// Route::get('/', function () {
-			
-   // return view('welcome');
-// });
-
-
 Route::get('/', 'IndexController@index');
+
 
 /*
 |--------------------------------------------------------------------------
-| 登陆模块
+| 后台
 |--------------------------------------------------------------------------
 | 
 */
-Route::group(['middleware' => ['web']], function () {
-    Route::group(['prefix' => 'admin'], function() {
-        Route::any('login', 'Admin\LoginController@login');
-        Route::get('code', 'Admin\LoginController@code');
-    });
+Route::group(['middleware' => ['web'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+  Route::any('login', 'LoginController@login');
+  Route::get('code', 'LoginController@code');
 });
+
+Route::group(['middleware' => ['web', 'admin.login'], 'prefix' => 'admin', 'namespace' => 'Admin'], function() {
+	Route::get('index', 'IndexController@index');
+	Route::get('info', 'IndexController@info');
+	Route::get('quit', 'LoginController@quit');
+	Route::any('pass', 'IndexController@pass');
+});
+
 
 
 /*

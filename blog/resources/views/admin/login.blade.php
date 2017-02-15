@@ -12,7 +12,7 @@
 		<h2>欢迎使用博客管理平台</h2>
 		<div class="form">
 			@if (session('msg'))
-				<p style="color: red; height: 30px;">{{session('msg')}}</p>
+				<p style="color: red; height: 30px;" id="error">{{session('msg')}}</p>
 			@else
 				<p style="color: red; height: 0;" id="error"></p>
 			@endif
@@ -30,7 +30,7 @@
 					<li>
 						<input type="text" class="code focus" name="code" id="code"/>
 						<span><i class="fa fa-check-square-o"></i></span>
-						<img src="{{url('admin/code')}}" alt="" id="code">
+						<img src="{{url('admin/code')}}" alt="" id="codes">
 					</li>
 					<li>
 						<input type="submit" value="立即登陆" id="submit" />
@@ -43,8 +43,8 @@
 
 	<script type="text/javascript">
 		// 点击再次请求验证码
-		var ObjCode = document.querySelector('#code');
-        ObjCode.onclick = function() {
+		var ObjCodes = document.querySelector('#codes');
+        ObjCodes.onclick = function() {
             this.src = '{{url("admin/code")}}' + '?random=' + Math.random();
 		};
 
@@ -60,6 +60,9 @@
             var valUser = ObjUesr.value;
             var valPass = ObjPass.value;
             var valCode = ObjCode.value;
+            
+            console.log( valUser );
+            
             if (!valUser) {
                 errShowHide(ObjErr, '用户名不能为空', 30);
                 return false;
@@ -69,7 +72,10 @@
             }  else if (!valCode) {
                 errShowHide(ObjErr, '验证码不能为空', 30);
                 return false;
-            } else if (!/^[a-zA-Z\d]\w{3,11}[a-zA-Z\d]$/.test(valUser) ) {
+            } else if (valUser.length < 3) {
+            		errShowHide(ObjErr, '用户名不能小于3个', 30);
+            		return false;
+            } else if (!/^[a-zA-Z0-9_]{3,16}$/.test(valUser) ) {
                 errShowHide(ObjErr, '用户名不能为特殊字符', 30);
                 return false;
             }
@@ -78,9 +84,15 @@
 		// 处理 错误显示
         var ArrFocus = document.querySelectorAll('.focus');
         for ( var i = 0; i<ArrFocus.length; i++ ) {
+        	try{
             ArrFocus[i].onfocus = function() {
-                ObjErr.style.height = '0';
+            	var ObjErr = document.querySelector('#error');
+            	console.log(ObjErr);
+              ObjErr.style.height = 0;
             }
+        	}catch(e){
+        		//TODO handle the exception
+        	}
         }
 
         // 设置错误区域显示隐藏
