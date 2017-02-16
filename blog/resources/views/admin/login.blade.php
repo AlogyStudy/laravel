@@ -61,8 +61,6 @@
             var valPass = ObjPass.value;
             var valCode = ObjCode.value;
             
-            console.log( valUser );
-            
             if (!valUser) {
                 errShowHide(ObjErr, '用户名不能为空', 30);
                 return false;
@@ -73,8 +71,8 @@
                 errShowHide(ObjErr, '验证码不能为空', 30);
                 return false;
             } else if (valUser.length < 3) {
-            		errShowHide(ObjErr, '用户名不能小于3个', 30);
-            		return false;
+          		errShowHide(ObjErr, '用户名不能小于3个', 30);
+          		return false;
             } else if (!/^[a-zA-Z0-9_]{3,16}$/.test(valUser) ) {
                 errShowHide(ObjErr, '用户名不能为特殊字符', 30);
                 return false;
