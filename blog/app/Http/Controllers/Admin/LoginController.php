@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Admin\User;
+use App\Http\Model\User;
 use Illuminate\Http\Request;
 require_once '/resources/org/code/Code.class.php';
 
@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Input;
 
 class LoginController extends CommonController {
-	
-	/**
-	 * 登陆状态
-	 */
-	public function login() {
-	    if ($input = Input::all()) {
-	        // 判断验证码
+
+    /**
+     * 登陆状态
+     */
+    public function login() {
+        if ($input = Input::all()) {
+            // 判断验证码
             if (strtoupper($input['code']) != strtoupper($this->getCode())) {
                 return back()->with('msg', '验证码错误!');
             }
@@ -29,48 +29,48 @@ class LoginController extends CommonController {
                 // DB::table('user')->where('user_id', $input['user_name'])
                 $user = User::first();
                 if ($user->user_name != $input['user_name'] || Crypt::decrypt($user->user_pass) != $input['user_pass']) {
-									return back()->with('msg', '用户名或密码不正确!');
-                } 
-                
-								// 登陆信息写入session中.
-								session(['users' => $user]);
-								
-								// 跳转后台首页
-								return redirect('admin/index');
+                    return back()->with('msg', '用户名或密码不正确!');
+                }
+
+                // 登陆信息写入session中.
+                session(['users' => $user]);
+
+                // 跳转后台首页
+                return redirect('admin/index');
             }
 
         } else {
-        		$this->quit();
+            $this->quit();
             return view('admin.login');
         }
 
-	}
-	
-	
-	/**
-	 * 退出系统
-	 */
-	public function quit() {
-		session(['users' => null]);
-		return redirect('admin/login');
-	}
- 
-	
-  /**
-   * 后台登陆验证码
-   */
-  public function code() {
-      $code = new \Code();
-      echo $code->make();
-  }
-	
-  /**
-   * 得到验证码
-   * @return 返回取到的验证码
-   */
-  public function getCode() {
-      $code = new \Code();
-      return $code->get();
-  }
-	
+    }
+
+
+    /**
+     * 退出系统
+     */
+    public function quit() {
+        session(['users' => null]);
+        return redirect('admin/login');
+    }
+
+
+    /**
+     * 后台登陆验证码
+     */
+    public function code() {
+        $code = new \Code();
+        echo $code->make();
+    }
+
+    /**
+     * 得到验证码
+     * @return 返回取到的验证码
+     */
+    public function getCode() {
+        $code = new \Code();
+        return $code->get();
+    }
+
 }
