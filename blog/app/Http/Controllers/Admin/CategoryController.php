@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class CategoryController extends CommonController {
 
@@ -18,16 +19,39 @@ class CategoryController extends CommonController {
         $data = $c->tree();
 		return view('admin.category.index')->with('data', $data);
     }
-
-    // post admin/category
-    public function store() {
-    }
+	
+	/**
+	 * 更改排序
+	 */
+	public function changeOrder() {
+		$input = Input::all();
+		$cate = Category::find($input['cate_id']);
+		$cate->cate_order = $input['cate_order'];
+		$res = $cate->update();
+		
+		// 执行是否成功
+		if ($res) {
+			$data = [
+				'status' => 1,
+				'msg' => '分类排序更新成功!'
+			];
+		} else {
+			$data = [
+				'status' => 0,
+				'msg' => '分类排序更新失败，请稍候重试!'
+			];			
+		}
+		
+		return json_encode($data);		
+	}
 
     /**
-	 * get admin/category/create 添加分类
+	 * get admin/category/create 添加分类 get
 	 */ 
     public function create() {
-    		
+    	$c = new Category();
+        $data = $c->tree();
+    	return view('admin.category.add')->with('data', $data);
     }
 
     /**
@@ -46,6 +70,7 @@ class CategoryController extends CommonController {
 	 * put admin/category/{category} 更新分类
 	 */
     public function update() {
+    	
     }
 
     /**
@@ -53,6 +78,11 @@ class CategoryController extends CommonController {
 	 */
     public function edit() {	
     }
-
+		
+		
+    // post admin/category 添加分类 post
+    public function store() {
+		$input = Input::all();
+    }
 		
 }

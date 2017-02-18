@@ -13,10 +13,17 @@ class Category extends Model {
 	 * @return 模型中处理的数据
 	 */
 	public function tree() {
-        $categorys = $this->all();
+        $categorys = $this->orderBy('cate_order', 'asc')->get();
 		$data = $this->getCateTree($categorys);
 		return $data;
 	}
+	
+//	public static function tree() {
+//      $categorys = Category::all();
+//		$data = (new Category())->getCateTree($categorys);
+//		return $data;
+//	}
+	
 
 	/**
 	 * 家谱树

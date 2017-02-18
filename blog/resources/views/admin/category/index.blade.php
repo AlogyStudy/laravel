@@ -49,7 +49,7 @@
 
 		<div class="result_wrap">
 			<div class="result_content">
-				<table class="list_tab">
+				<table class="list_tab" id="list_tab">
 					<tr>
 						<th class="tc" width="5%"><input type="checkbox" name=""></th>
 						<th class="tc">排序</th>
@@ -67,7 +67,7 @@
 						<tr>
 							<td class="tc"><input type="checkbox" name="id[]" value="{{$v['cate_id']}}"></td>
 							<td class="tc">
-								<input type="text" name="ord[]" value="{{$v['cate_order']}}">
+								<input type="text" name="ord[]" class="changeOrder" _id="{{$v['cate_id']}}" value="{{$v['cate_order']}}">
 							</td>
 							<td class="tc">{{$v['cate_id']}}</td>
 							<td>
@@ -85,8 +85,7 @@
 						</tr>
 					@endforeach
 				</table>
-
-
+					
 				<div class="page_nav">
 					<div>
 						<a class="first" href="/wysls/index.php/Admin/Tag/index/p/1.html">第一页</a>
@@ -101,7 +100,6 @@
 						<span class="rows">11 条记录</span>
 					</div>
 				</div>
-
 
 
 				<div class="page_list">
@@ -119,4 +117,44 @@
 		</div>
 	</form>
 	<!--搜索结果页面 列表 结束-->
+	
+	<script src="{{asset('resources/org/layer/layer.js')}}"></script>
+	<script type="text/javascript">
+		// 排序功能
+		$(function() {
+			$('.changeOrder').change(function() {
+				var cate_id = $(this).attr('_id');
+				var cate_order = $(this).val();
+				
+				$.ajax({
+					url: '{{url("admin/cate/changeorder")}}',
+					type: 'POST',
+					data: {
+						_token: '{{csrf_token()}}', // csrf 认证
+						cate_id: cate_id,
+						cate_order: cate_order
+					},
+					success: function(data) {
+						var data = JSON.parse(data);
+						
+						if (data.status === 1) {
+							layer.alert(data.msg, {icon: 1});
+							
+							// 刷新页面.	
+							setTimeout(function() {
+								window.history.go(0);
+							}, 1000);
+							
+						} else if (data.status === 0) {
+							layer.alert(data.msg, {icon: 2});							
+						}
+						
+					}
+				});
+			});
+			
+			
+		});
+	</script>
+	
 @endsection
