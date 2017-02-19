@@ -9,6 +9,8 @@ class Category extends Model {
     protected $primaryKey = 'cate_id';
     public $timestamps = false;
 
+    protected $guarded = [];
+
 	/**
 	 * @return 模型中处理的数据
 	 */

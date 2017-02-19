@@ -79,8 +79,8 @@
 							<td>{{$v['cate_time']}}</td>
 							<td></td>
 							<td>
-								<a href="#">修改</a>
-								<a href="#">删除</a>
+								<a href="{{url('admin/category/'. $v['cate_id'] .'/edit')}}">修改</a>
+								<a href="javascript:;" onclick="del(this, {{$v['cate_id']}})">删除</a>
 							</td>
 						</tr>
 					@endforeach
@@ -120,6 +120,7 @@
 	
 	<script src="{{asset('resources/org/layer/layer.js')}}"></script>
 	<script type="text/javascript">
+		
 		// 排序功能
 		$(function() {
 			$('.changeOrder').change(function() {
@@ -153,8 +154,28 @@
 				});
 			});
 			
-			
 		});
+		
+		
+		// 删除提示
+		function del(_this, $cate_id) {
+			layer.confirm('确认删除当前这个分类么？', {
+				btn: ['确认', '返回']
+			}, function() {
+				
+				// 异步删除数据
+				$.ajax({
+					url: '{{url("admin/category")}}' + '/' +$cate_id,
+					type: 'delete',
+					success: function(data) {
+						console.log(data);
+					}
+				});
+				
+			});
+			
+//			{{url('admin/category/'. $v['cate_id'])}}
+		}
 	</script>
 	
 @endsection
