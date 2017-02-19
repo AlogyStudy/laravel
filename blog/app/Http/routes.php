@@ -25,14 +25,21 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin', 'namespace' => 'Admi
   Route::get('code', 'LoginController@code');
 });
 
+
 Route::group(['middleware' => ['web', 'admin.login'], 'prefix' => 'admin', 'namespace' => 'Admin'], function() {
 	Route::get('index', 'IndexController@index');
 	Route::get('info', 'IndexController@info');
 	Route::get('quit', 'LoginController@quit');
 	Route::any('pass', 'IndexController@pass');
 	Route::post('cate/changeorder', 'CategoryController@changeOrder');
+
+	Route::any('upload', 'CommonController@uploadImg');
 		
+	// 分类资源路由	
 	Route::resource('category', 'CategoryController');
+	
+	// 文章资源路由
+	Route::resource('article', 'ArticleController');
 });
 
 
