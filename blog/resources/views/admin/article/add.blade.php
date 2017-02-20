@@ -38,7 +38,7 @@
     <!--结果集标题与导航组件 结束-->
 
     <div class="result_wrap">
-        <form action="{{url('admin/category')}}" method="post">
+        <form action="{{url('admin/article')}}" method="post">
             <table class="add_tab">
                 {{csrf_field()}}
                 <tbody>
@@ -138,7 +138,7 @@
                         <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/ueditor.all.min.js')}}"> </script>
                         <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/lang/zh-cn/zh-cn.js')}}"></script>
 
-                        <script id="editor" type="text/plain" name="art_contenttext" style="width: 860px;height:500px;"></script>
+                        <script id="editor" type="text/plain" name="art_content" style="width: 860px;height:500px;"></script>
 
                         <script type="text/javascript">
                             // 实例化编辑器
