@@ -102,7 +102,6 @@ class CategoryController extends CommonController {
 			// 更新数据成功
 			return redirect('admin/category');
 		}
-		
     }
 
     /**

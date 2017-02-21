@@ -3,69 +3,51 @@
 <head>
     <title>Lara</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-    <style>
-        html, body {
-            height: 100%;
-            font-size: 24px;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        ul {
-            list-style: none;
-        }
-        a {
-            text-decoration: none;
-            color: #111;
-        }
-        a:hover {
-            font-weight: bold;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            display: table;
-            font-weight: 100;
-            font-family: 'Lato';
-        }
-
-        .container {
-            text-align: center;
-            display: table-cell;
-            vertical-align: middle;
-        }
-
-        .content {
-            text-align: center;
-            display: inline-block;
-        }
-        .nav {
-            display: flex;
-        }
-        .nav li {
-            flex: 1;
-        }
-        .title {
-            font-size: 80px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="{{url('resources/assets/css/index.css')}}" />
 </head>
 <body>
+	
+<script type="text/javascript">
+    try{
+        function setFontsize() {
+            document.querySelector('html').style.fontSize = (document.body.clientWidth / 375 * 16 + 'px');
+        }
+        setFontsize();
+    }catch(e){
+        console.log(e);
+    }
+</script>
+
 <div class="container">
-    <div>
-        <ul class="nav">
-            <li><a href="https://github.com/Alogy">GitHub</a></li>
-            <li><a href="https://twitter.com/xingzhanglin">Twitter</a></li>
-            <li><a href="http://alogy.zcool.com.cn/">ZCool</a></li>
-        </ul>
+	
+    <!--header-->
+    <div class="header">
+        <div class="logo">ALoGy</div>
+        <div class="nav">
+            <ul><li><a href="#">Log</a></li></ul>
+            <ul><li><a href="https://github.com/alogy" target="_blank">GitHub</a></li></ul>
+            <ul><li><a href="#">WeChat</a></li></ul>
+            <ul><li>Twitter</li></ul>
+            <ul class="hide"><li>Movie</li></ul>
+            <ul class="hide"><li>ZCool</li></ul>
+            <ul class="hide"><li>DouBan</li></ul>
+            <ul class="hide"><li>About</li></ul>
+        </div>
     </div>
+    <!--end header-->
+
+    <!--content-->
     <div class="content">
-        <div class="title">Web Font-End Engineer</div>
-        <div class="title">xingzhanglin@gmail.com</div>
-        <div class="title">TEL: 13164889430</div>
+        <div class="title">
+            <div>Web Font-End Engineer</div>
+            <div>xingzhanglin@gmail.com</div>
+            <div>素其位而行，不愿乎其外</div>
+        </div>
     </div>
+    <!--end content-->
+    
 </div>
+
 </body>
 </html>

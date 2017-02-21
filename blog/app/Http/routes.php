@@ -31,15 +31,20 @@ Route::group(['middleware' => ['web', 'admin.login'], 'prefix' => 'admin', 'name
 	Route::get('info', 'IndexController@info');
 	Route::get('quit', 'LoginController@quit');
 	Route::any('pass', 'IndexController@pass');
-	Route::post('cate/changeorder', 'CategoryController@changeOrder');
+
 
 	Route::any('upload', 'CommonController@uploadImg');
 		
 	// 分类资源路由	
 	Route::resource('category', 'CategoryController');
+    Route::post('cate/changeorder', 'CategoryController@changeOrder');
 	
 	// 文章资源路由
 	Route::resource('article', 'ArticleController');
+	
+	// 友情链接路由
+	Route::resource('links', 'LinksController');
+    Route::post('links/changeorder', 'LinksController@changeOrder');
 });
 
 

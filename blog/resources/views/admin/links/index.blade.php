@@ -7,7 +7,7 @@
 	<div class="crumb_warp">
 		<!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
 		<i class="fa fa-home"></i>
-		<a href="{{url('admin/info')}}">首页</a> &raquo; 全部文章
+		<a href="{{url('admin/info')}}">首页</a> &raquo; 友情链接管理
 	</div>
 	<!--面包屑导航 结束-->
 
@@ -38,13 +38,13 @@
 	<form action="#" method="post">
 		<div class="result_wrap">
 			<div class="result_title">
-				<h3>文章列表</h3>
+				<h3>友情链接列表</h3>
 			</div>
 			<!--快捷导航 开始-->
 			<div class="result_content">
 				<div class="short_wrap">
-					<a href="{{url('admin/article/create')}}"><i class="fa fa-plus"></i>添加文章</a>
-					<a href="{{url('admin/article')}}"><i class="fa fa-recycle"></i>全部文章</a>
+					<a href="{{url('admin/links/create')}}"><i class="fa fa-plus"></i>添加友情链接</a>
+					<a href="{{url('admin/links')}}"><i class="fa fa-recycle"></i>全部友情链接</a>
 				</div>
 			</div>
 			<!--快捷导航 结束-->
@@ -56,24 +56,28 @@
 					<tr>
 						<th class="tc" width="5%"><input type="checkbox" name=""></th>
 						<th class="tc">ID</th>
-						<th>文章标题</th>
-						<th>查看次数</th>
-						<th>编辑</th>
-						<th>更新时间</th>
+						<th>名称</th>
+						<th>标题</th>
+						<th>链接</th>
+						<th>排序</th>
 						<th>操作</th>
 					</tr>
 
 					@foreach ($data as $v)
 						<tr>
-							<td class="tc"><input type="checkbox" name="id[]" value="{{$v['art_id']}}"></td>
-							<td class="tc">{{$v['art_id']}}</td>
-							<td><a href="#">{{$v['art_title']}}</a></td>
-							<td>{{$v['art_view']}}</td>
-							<td>{{$v['art_editor']}}</td>
-							<td>{{date('Y-m-d', $v['art_time'])}}</td>
+							<td class="tc"><input type="checkbox" name="id[]" value="{{$v['link_is']}}"></td>
+							<td class="tc">
+								<input type="text" name="ord[]" class="changeOrder" _id="{{$v['link_id']}}" value="{{$v['link_order']}}">
+							</td>
+							<td class="tc">{{$v['link_id']}}</td>
 							<td>
-								<a href="{{url('admin/article/'. $v['art_id'] .'/edit')}}">修改</a>
-								<a href="javascript:;" onclick="del(this, {{$v['art_id']}})">删除</a>
+								<a href="#" style="margin-left: {{$v['lev']}}em;">{{$v['link_name']}}</a>
+							</td>
+							<td>{{$v['link_title']}}</td>
+							<td>{{$v['link_url']}}</td>
+							<td>
+								<a href="{{url('admin/links/'. $v['link_id'] .'/edit')}}">修改</a>
+								<a href="javascript:;" onclick="del(this, {{$v['link_id']}})">删除</a>
 							</td>
 						</tr>
 					@endforeach
@@ -83,34 +87,22 @@
 	</form>
 	<!--搜索结果页面 列表 结束-->
 
-	
-	<div class="page_list">
-		{{$data->links()}}
-	</div>
-	
-	<style>
-		.page_list ul li span {
-			font-size: 15px;
-			padding: 6px 12px;
-		}
-	</style>
-
 	<script src="{{asset('resources/org/layer/layer.js')}}"></script>
 	<script type="text/javascript">
 
         // 排序功能
         $(function() {
             $('.changeOrder').change(function() {
-                var cate_id = $(this).attr('_id');
-                var cate_order = $(this).val();
+                var link_id = $(this).attr('_id');
+                var link_order = $(this).val();
 
                 $.ajax({
-                    url: '{{url("admin/cate/changeorder")}}',
+                    url: '{{url("admin/links/changeorder")}}',
                     type: 'POST',
                     data: {
                         _token: '{{csrf_token()}}', // csrf 认证
-                        cate_id: cate_id,
-                        cate_order: cate_order
+                        link_id: link_id,
+                        link_order: link_order
                     },
                     success: function(data) {
                         var data = JSON.parse(data);
@@ -133,14 +125,14 @@
 
 
         // 删除提示
-        function del(_this, $art_id) {
-            layer.confirm('确认删除当前文章么？', {
+        function del(_this, $cate_id) {
+            layer.confirm('确认删除当前这个分类么？', {
                 btn: ['确认', '返回']
             }, function() {
 
                 // 异步删除数据
                 $.ajax({
-                    url: '{{url("admin/article")}}' + '/' +$art_id,
+                    url: '{{url("admin/category")}}' + '/' +$cate_id,
                     type: 'post',
                     data: {
                         _token: '{{csrf_token()}}',

@@ -88,22 +88,55 @@ class ArticleController extends CommonController {
     /**
      * DELETE admin/article/{article}
      */
-    public function destroy() {
-
+    public function destroy($art_id) {
+		$res = Article::where('art_id', $art_id)->delete();
+		
+		if (!$res) {
+			// 删除失败
+			$data = [
+				'status' => 0,
+				'msg' => '删除文章失败'
+			];
+			return json_encode($data);
+		} else {
+			// 删除成功
+			$data = [
+				'status' => 1,
+				'msg' => '删除文章成功'
+			];
+			return json_encode($data);
+		}		
     }
 
     /**
      * PUT  admin/article/{article}
+	 * 更新文章
      */
-    public function update() {
-
+    public function update($art_id) {
+    	// 收集表单数据
+    	$input = Input::except('_token', '_method');
+		// 更新
+		$res = Article::where('art_id', $art_id)->update($input);
+		
+		if (!$res) {
+			// 更新数据失败
+			return back()->with('errors', '文章更新失败');				
+		} else {
+			// 更新数据成功
+			return redirect('admin/article');
+		}
     }
 
     /**
      * GET admin/article/{article}/edit
+	 * 编辑文章
      */
-    public function edit() {
-
+    public function edit($art_id) {
+        $field = Article::find($art_id);
+		
+    	$cate = new Category();
+		$data = $cate->tree();
+    	return view('admin.article.edit', compact('field','data'));
     }
 
 }
