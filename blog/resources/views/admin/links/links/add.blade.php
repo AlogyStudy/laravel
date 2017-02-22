@@ -1,3 +1,5 @@
+
+
 @extends('admin.public.layout')
 
 @section('content')
@@ -5,9 +7,10 @@
     <!--面包屑导航 开始-->
     <div class="crumb_warp">
         <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
-        <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首页</a> &raquo; 编辑友情链接
+        <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首页</a> &raquo; 添加友情链接
     </div>
     <!--面包屑导航 结束-->
+
 
     <!--结果集标题与导航组件 开始-->
     <div class="result_wrap">
@@ -33,36 +36,35 @@
         </div>
     </div>
     <!--结果集标题与导航组件 结束-->
+
     <div class="result_wrap">
-        <form action="{{url('admin/links/'.$field['link_id'])}}" method="post">
-            {{--<input type="hidden" name="_method" value="put" />--}}
-            {{method_field('PUT')}}
-            {{csrf_field()}}
+        <form action="{{url('admin/links')}}" method="post">
             <table class="add_tab">
+                {{csrf_field()}}
                 <tbody>
                 <tr>
                     <th><i class="require">*</i>链接名称：</th>
                     <td>
-                        <input type="text" name="link_name" value="{{$field['link_name']}}">
+                        <input type="text" name="link_name">
                         <span><i class="fa fa-exclamation-circle yellow"></i>链接名称必须填写</span>
                     </td>
                 </tr>
                 <tr>
                     <th><i class="require">*</i>链接标题：</th>
                     <td>
-                        <input type="text" class="lg" name="link_title" value="{{$field['link_title']}}">
+                        <input type="text" class="lg" name="link_title">
                     </td>
                 </tr>
                 <tr>
                     <th><i class="require">*</i>Url：</th>
                     <td>
-                        <input type="text" class="lg" name="link_url" value="{{$field['link_url']}}">
+                        <input type="text" class="lg" name="link_url" value="http://">
                     </td>
                 </tr>
                 <tr>
                     <th>排序：</th>
                     <td>
-                        <input type="text" class="sm" name="link_order" value="{{$field['link_order']}}">
+                        <input type="text" class="sm" name="link_order" value="0">
                     </td>
                 </tr>
                 <tr>
@@ -76,4 +78,5 @@
             </table>
         </form>
     </div>
+
 @endsection

@@ -97,7 +97,7 @@ class CategoryController extends CommonController {
 		
 		if (!$res) {
 			// 更新数据失败
-			return back()->with('errors', '添加失败');				
+			return back()->with('errors', '添加更新分类');
 		} else {
 			// 更新数据成功
 			return redirect('admin/category');

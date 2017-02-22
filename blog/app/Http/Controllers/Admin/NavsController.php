@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Model\Links;
+use App\Http\Model\Navs;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -10,20 +10,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
-class LinksController extends CommonController {
+class NavsController extends CommonController {
     /**
-     * get admin/links 全部列表
+     * get admin/navs 全部自定义导航
      */
     public function index() {
-        $data = Links::orderBy('link_order', 'asc')->get();
-        return view('admin.links.index', compact('data'));
+        $data = Navs::orderBy('nav_order', 'asc')->get();
+        return view('admin.navs.index', compact('data'));
     }
 
     /**
-     * get admin/links/create 添加友情链接
+     * get admin/navs/create 添加自定义导航
      */
     public function create() {
-        return view('admin.links.add');
+        return view('admin.navs.add');
     }
 
     /**
@@ -34,10 +34,10 @@ class LinksController extends CommonController {
     }
 
     /**
-     * delete admin/links/{links} 删除单个友情链接
+     * delete admin/navs/{navs} 删除单个自定义导航
      */
-    public function destroy($link_id) {
-        $res = Links::where('link_id', $link_id)->delete();
+    public function destroy($nav_id) {
+        $res = Navs::where('nav_id', $nav_id)->delete();
         if (!$res) {
             // 删除失败
             $data = [
@@ -57,60 +57,61 @@ class LinksController extends CommonController {
 
 
     /**
-     * put admin/links/{links} 更新分类
+     * put admin/navs/{navs} 更新自定义导航
      */
-    public function update($link_id) {
-	    $input = Input::except('_token', '_method');
-	    $res = Links::where('link_id', $link_id)->update($input);
-	    if ($res) {
-	        // 更新成功
-            return redirect('admin/links');
+    public function update($nav_id) {
+        $input = Input::except('_token', '_method');
+        $res = Navs::where('nav_id', (int)$nav_id)->update($input);
+		
+        if ($res) {
+            // 更新成功
+            return redirect('admin/navs');
         } else {
             // 更新失败
-            return back()->with('errors', '更新友情链接失败');
+            return back()->with('errors', '更新自定义导航失败');
         }
 
     }
 
     /**
-     * get admin/links/{links}/edit 编辑友情链接
+     * get admin/navs/{navs}/edit 编辑自定义导航
      */
-    public function edit($link_id) {
-        $field = Links::find($link_id);
-        return view('admin.links.edit', compact('field'));
+    public function edit($nav_id) {
+        $field = Navs::find($nav_id);
+        return view('admin.navs.edit', compact('field'));
     }
 
 
     /**
-     * post admin/links 添加友情链接
+     * post admin/navs 添加自定义导航
      */
     public function store() {
         $input = Input::except('_token'); // 不需要使用某些方法
-
+        
         // 验证规则
         $rules = [
-            'link_name' => 'required',
-            'link_title' => 'required',
-            'link_url' => 'required'
+            'nav_name' => 'required',
+            'nav_alias' => 'required',
+            'nav_url' => 'required'
         ];
 
         // 提示信息
         $msg = [
-            'link_name.required' => '友情链接名称不能为空',
-            'link_title.required' => '友情链接标题不能为空',
-            'link_url.required' => '友情链接Url不能为空'
+            'nav_name.required' => '自定义导航名称不能为空',
+            'nav_alias.required' => '自定义导航标题不能为空',
+            'nav_url.required' => '自定义导航Url不能为空'
         ];
 
         $validator = Validator::make($input, $rules, $msg);
 
         // 检验表单数据
         if ($validator->passes()) {
-            $res = Links::create($input);
+            $res = Navs::create($input);
             // 判断添加是否成功
             if (!$res) {
                 return back()->with('errors', '添加失败');
             } else {
-                return redirect('admin/links');
+                return redirect('admin/navs');
             }
         } else {
             return back()->withErrors($validator);
@@ -123,9 +124,9 @@ class LinksController extends CommonController {
      */
     public function changeOrder() {
         $input = Input::all();
-        $link = Links::find($input['link_id']);
-        $link->link_order = $input['link_order'];
-        $res = $link->update();
+        $nav = Navs::find($input['nav_id']);
+        $nav->nav_order = $input['nav_order'];
+        $res = $nav->update();
 
         // 执行是否成功
         if ($res) {
