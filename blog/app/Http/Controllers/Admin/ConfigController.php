@@ -16,6 +16,9 @@ class ConfigController extends CommonController {
      */
     public function index() {
         $data = Config::orderBy('conf_order', 'asc')->get();
+		
+		
+		
         return view('admin.configs.index', compact('data'));
     }
 
@@ -91,14 +94,12 @@ class ConfigController extends CommonController {
         $rules = [
             'conf_name' => 'required',
             'conf_title' => 'required',
-            'conf_url' => 'required'
         ];
 
         // 提示信息
         $msg = [
             'conf_name.required' => '配置项名称不能为空',
             'conf_title.required' => '配置项标题不能为空',
-            'conf_url.required' => '配置项Url不能为空'
         ];
 
         $validator = Validator::make($input, $rules, $msg);
