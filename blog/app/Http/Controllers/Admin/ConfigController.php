@@ -17,8 +17,26 @@ class ConfigController extends CommonController {
     public function index() {
         $data = Config::orderBy('conf_order', 'asc')->get();
 		
-		
-		
+		foreach($data as $k => $v) {
+			switch ($v['conf_field_type']) {
+				case 'input':
+					$data[$k]->_html = '<input type="text" class="lg" name="conf_content" value="'. $v['conf_content'] .'" />';
+				break;
+				case 'textarea':
+					$data[$k]->_html = '<textarea name="conf_content">'. $v['conf_content'] .'</textarea>';
+				break;
+				case 'radio':
+					$arr = explode(',', $v->conf_field_value);
+					$data[$k]->_html = '';
+					foreach($arr as $m => $n){
+						$r = explode('|', $n);
+						$c = $v['conf_content'] == $r[0] ? 'checked' : '';
+						$close_id = $v['conf_content'] == $r[0] ? 'close' : 'start';
+						$data[$k]->_html .=  '<input type="radio" id="'.$close_id.'" '. $c .' name="conf_content" value="'. $r[0] .'" />' . '<label for="'.$close_id.'">'. $r[1] .'</label>';
+					}
+				break;				
+			}
+		}
         return view('admin.configs.index', compact('data'));
     }
 
@@ -145,3 +163,4 @@ class ConfigController extends CommonController {
     }
 
 }
+

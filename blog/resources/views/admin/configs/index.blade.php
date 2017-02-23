@@ -73,9 +73,7 @@
 								<a href="#" style="margin-left: {{$v['lev']}}em;">{{$v['conf_name']}}</a>
 							</td>
 							<td>{{$v['conf_title']}}</td>
-							<td>
-								
-							</td>
+							<td>{!! $v['_html'] !!}</td>
 							<td>{{$v['conf_field_type']}}</td>
 							<td>{{$v['conf_field_value']}}</td>
 							<td>
