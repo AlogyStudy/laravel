@@ -7,7 +7,7 @@
     <!--面包屑导航 开始-->
     <div class="crumb_warp">
         <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
-        <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首页</a> &raquo; 添加网站配置
+        <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首页</a> &raquo; 网站配置管理
     </div>
     <!--面包屑导航 结束-->
 
@@ -15,7 +15,7 @@
     <!--结果集标题与导航组件 开始-->
     <div class="result_wrap">
         <div class="result_title">
-            <h3>网站配置管理</h3>
+            <h3>添加网站配置</h3>
             @if(count($errors) > 0)
                 <div class="mark">
                     @if(!is_object($errors))
@@ -43,17 +43,17 @@
                 {{csrf_field()}}
                 <tbody>
                 <tr>
-                    <th><i class="require">*</i>网站配置名称：</th>
-                    <td>
-                        <input type="text" name="conf_name">
-                        <span><i class="fa fa-exclamation-circle yellow"></i>网站配置名称必须填写</span>
-                    </td>
-                </tr>
-                <tr>
                     <th><i class="require">*</i>网站配置标题：</th>
                     <td>
                         <input type="text" name="conf_title">
                         <span><i class="fa fa-exclamation-circle yellow"></i>网站配置标题必须填写</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th><i class="require">*</i>网站配置名称：</th>
+                    <td>
+                        <input type="text" name="conf_name">
+                        <span><i class="fa fa-exclamation-circle yellow"></i>网站配置名称必须填写</span>
                     </td>
                 </tr>
                 <tr>

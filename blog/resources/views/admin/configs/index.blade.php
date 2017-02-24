@@ -32,10 +32,21 @@
 	<!--结果页快捷搜索框 结束-->
 
 	<!--搜索结果页面 列表 开始-->
-	<form action="#" method="post">
+	<form action="{{url('admin/configs/changecontent')}}"  method="post">
 		<div class="result_wrap">
 			<div class="result_title">
 				<h3>网站配置列表</h3>
+            @if(count($errors) > 0)
+                <div class="mark">
+                    @if(!is_object($errors))
+                        <p>{{$errors}}</p>
+                    @else
+                        @foreach($errors->all() as $v)
+                            <p>{{$v}}</p>
+                        @endforeach
+                    @endif
+                </div>
+            @endif
 			</div>
 			<!--快捷导航 开始-->
 			<div class="result_content">
@@ -50,40 +61,47 @@
 		<div class="result_wrap">
 			<div class="result_content">
 				<table class="list_tab" id="list_tab">
+					{{csrf_field()}}
 					<tr>
 						<th class="tc" width="5%"><input type="checkbox" name=""></th>
 						<th class="tc">网站配置排序</th>
-						<th class="tc">ID	</th>
-						<th>网站配置名称</th>
+						<th class="tc">ID</th>
 						<th>网站配置标题</th>
+						<th>网站配置名称</th>
 						<th>网站配置内容</th>
 						<th>网站配置类型</th>
 						<th>网站配置类型值</th>
 						<th>操作</th>
 					</tr>
-					
+
 					@foreach ($data as $v)
-						<tr>
-							<td class="tc"><input type="checkbox" name="id[]" value="{{$v['conf_id']}}"></td>
-							<td class="tc">
-								<input type="text" name="ord[]" class="changeOrder" _id="{{$v['conf_id']}}" value="{{$v['conf_order']}}">
-							</td>
-							<td class="tc">{{$v['conf_id']}}</td>
-							<td>
-								<a href="#" style="margin-left: {{$v['lev']}}em;">{{$v['conf_name']}}</a>
-							</td>
-							<td>{{$v['conf_title']}}</td>
-							<td>{!! $v['_html'] !!}</td>
-							<td>{{$v['conf_field_type']}}</td>
-							<td>{{$v['conf_field_value']}}</td>
-							<td>
-								<a href="{{url('admin/configs/'. $v['conf_id'] .'/edit')}}">修改</a>
-								<a href="javascript:;" onclick="del(this, {{$v['conf_id']}})">删除</a>
-							</td>
-						</tr>
+					<tr>
+						<td class="tc"><input type="checkbox" name="id[]" value="{{$v['conf_id']}}"></td>
+						<td class="tc">
+							<input type="text" name="ord[]" class="changeOrder" _id="{{$v['conf_id']}}" value="{{$v['conf_order']}}">
+						</td>
+						<td class="tc">{{$v['conf_id']}}</td>
+						<td>
+						<a href="#" style="margin-left: {{$v['lev']}}em;">{{$v['conf_title']}}</a>
+						</td>
+						<td>{{$v['conf_name']}}</td>
+						<td>
+							<input type="hidden" name="conf_id[]" value="{{$v['conf_id']}}"/>{!! $v['_html'] !!}
+						</td>
+						<td>{{$v['conf_field_type']}}</td>
+						<td>{{$v['conf_field_value']}}</td>
+						<td>
+							<a href="{{url('admin/configs/'. $v['conf_id'] .'/edit')}}">修改</a>
+							<a href="javascript:;" onclick="del(this, {{$v['conf_id']}})">删除</a>
+						</td>
+					</tr>
 					@endforeach
 				</table>
 			</div>
+	        <div class="btn_group">
+	            <input type="submit" value="提交">
+	            <input type="button" class="back" onclick="history.go(-1)" value="返回" >
+	        </div>
 		</div>
 	</form>
 	<!--搜索结果页面 列表 结束-->

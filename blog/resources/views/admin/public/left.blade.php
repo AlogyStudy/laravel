@@ -2,12 +2,12 @@
 <div class="menu_box">
     <ul>
         <li>
-            <h3><i class="fa fa-fw fa-clipboard"></i>常用操作</h3>
+            <h3><i class="fa fa-fw fa-clipboard"></i>内容管理</h3>
             <ul class="sub_menu">
-                <li><a href="{{url('admin/category/create')}}" target="main"><i class="fa fa-fw fa-plus-square"></i>添加文章分类</a></li>
-                <li><a href="{{url('admin/category')}}" target="main"><i class="fa fa-fw fa-list-ul"></i>文章分类列表</a></li>
+                <li><a href="{{url('admin/category/create')}}" target="main"><i class="fa fa-fw fa-plus-square"></i>添加分类</a></li>
+                <li><a href="{{url('admin/category')}}" target="main"><i class="fa fa-fw fa-list-ul"></i>分类列表</a></li>
                 <li><a href="{{url('admin/article/create')}}" target="main"><i class="fa fa-fw fa-plus-square"></i>添加文章</a></li>
-                <li><a href="{{url('admin/article')}}" target="main"><i class="fa fa-fw fa-list-ul"></i>全部文章</a></li>
+                <li><a href="{{url('admin/article')}}" target="main"><i class="fa fa-fw fa-list-ul"></i>文章列表</a></li>
             </ul>
         </li>
         <li>
@@ -15,7 +15,7 @@
             <ul class="sub_menu" style="display: block;">
                 <li><a href="{{url('admin/links')}}" target="main"><i class="fa fa-fw fa-cubes"></i>友情链接</a></li>
                 <li><a href="{{url('admin/navs')}}" target="main"><i class="fa fa-fw fa-navicon"></i>网站导航</a></li>
-                <li><a href="#" target="main"><i class="fa fa-fw fa-database"></i>备份还原</a></li>
+                <li><a href="{{url('admin/configs')}}" target="main"><i class="fa fa-fw fa-cogs"></i>网站配置</a></li>
             </ul>
         </li>
         <li>
