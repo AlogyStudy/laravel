@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', 'IndexController@index');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +18,7 @@ Route::get('/', 'IndexController@index');
 |--------------------------------------------------------------------------
 | 
 */
+
 Route::group(['middleware' => ['web'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
   Route::any('login', 'LoginController@login');
   Route::get('code', 'LoginController@code');
@@ -73,5 +72,9 @@ Route::group(['middleware' => ['web', 'admin.login'], 'prefix' => 'admin', 'name
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+	Route::get('/', 'Home\IndexController@index');
+	Route::get('/cate/{cate_id}', 'Home\IndexController@cate');
+	Route::get('/art', 'Home\IndexController@article');
 });
+
+

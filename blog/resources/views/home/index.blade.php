@@ -5,7 +5,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <link rel="stylesheet" href="{{url('resources/assets/css/index.css')}}" />
-</head>
+</head>	
 <body>
 	
 <script type="text/javascript">
@@ -23,7 +23,7 @@
 	
     <!--header-->
     <div class="header">
-        <div class="logo">ALoGy</div>
+        <div class="logo">ALoGY</div>
         <div class="nav">
             <ul><li><a href="#">Log</a></li></ul>
             <ul><li><a href="https://github.com/alogy" target="_blank">GitHub</a></li></ul>
@@ -48,6 +48,5 @@
     <!--end content-->
     
 </div>
-
 </body>
 </html>
