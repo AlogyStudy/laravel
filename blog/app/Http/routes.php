@@ -26,6 +26,7 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin', 'namespace' => 'Admi
 
 
 Route::group(['middleware' => ['web', 'admin.login'], 'prefix' => 'admin', 'namespace' => 'Admin'], function() {
+	
 	Route::get('index', 'IndexController@index');
 	Route::get('info', 'IndexController@info');
 	Route::get('quit', 'LoginController@quit');
@@ -72,9 +73,13 @@ Route::group(['middleware' => ['web', 'admin.login'], 'prefix' => 'admin', 'name
 */
 
 Route::group(['middleware' => ['web']], function () {
+	
 	Route::get('/', 'Home\IndexController@index');
+	Route::get('/cate', 'Home\IndexController@cateAll');
 	Route::get('/cate/{cate_id}', 'Home\IndexController@cate');
-	Route::get('/art', 'Home\IndexController@article');
+	Route::get('/wechat', 'Home\IndexController@wechat');
+	Route::get('/movie', 'Home\IndexController@movie');
+	Route::get('/about', 'Home\IndexController@about');
+	Route::get('/art/{art_id}', 'Home\IndexController@article');
+	
 });
-
-

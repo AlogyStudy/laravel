@@ -11,8 +11,8 @@ var _hmt = _hmt || [];
 </script>
 ',
   'web_status' => '1',
-  'keywords' => '',
+  'keywords' => '博客，Web技术，前端，PHP，ES6，ES7，Vue，JavaScript，Node，Mysql，Express',
   'seo_title' => 'AL',
-  'description' => '',
+  'description' => '记录博客的WEB',
   'copyright' => '',
 );

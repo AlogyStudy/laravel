@@ -72,7 +72,7 @@
                 <tr>
                     <th>关键词：</th>
                     <td>
-                        <textarea name="cate_keywords" value="{{$field['cate_keywords']}}"></textarea>
+                        <textarea name="cate_keywords">{{$field['cate_keywords']}}</textarea>
                     </td>
                 </tr>
                 <tr>
@@ -84,7 +84,7 @@
                 <tr>
                     <th>描述：</th>
                     <td>
-                        <textarea name="cate_discription" value="{{$field['cate_discription']}}"></textarea>
+                        <textarea name="cate_discription">{{$field['cate_discription']}}</textarea>
                     </td>
                 </tr>
                 <tr>

@@ -1,0 +1,56 @@
+
+.details-wrap {
+    font-size: 16px;
+    width: 1080px;
+    margin: 1rem auto;
+    text-align: left;
+    padding-top: 50px;
+    font-family: "微软雅黑";
+}
+
+.d-article {
+    width: 720px;
+    margin: 0 auto;
+    padding: 0.4rem;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 0.1px 0.1px 3px rgb(230, 229, 229);
+    overflow: hidden;
+}
+
+.d-article h2 {
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 0 0 0.15rem;
+    padding: 0 0 0.15rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    font-size: 0.45rem;
+}
+
+.d-article p {
+    display: block;
+    line-height: 1.6;
+    margin: 0.25rem 0;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+
+
+
+.info-d {
+    color: #9E9E9E;
+    line-height: 100px;
+}
+
+
+
+
+.ds-thread {
+    margin-top: 1rem;
+}
+
+.coypright {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}

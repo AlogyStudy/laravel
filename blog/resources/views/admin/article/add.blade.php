@@ -61,7 +61,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th><i class="require">*</i>缩略图：</th>
+                    <th>缩略图：</th>
                     <td>
                         <input type="text" class="art_thumb lg" name="art_thumb">
                         <script src="{{asset('resources/org/uploadify/jquery.uploadify.min.js')}}" type="text/javascript"></script>
@@ -108,13 +108,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>编辑：</th>
+                    <th><i class="require">*</i>编辑：</th>
                     <td>
                         <input type="text" name="art_editor" />
                     </td>
                 </tr>
                 <tr>
-                    <th>文章标签：</th>
+                    <th><i class="require">*</i>文章标签：</th>
                     <td>
                         <input type="text" name="art_tags">
                     </td>
@@ -134,23 +134,18 @@
                 <tr>
                     <th><i class="require">*</i>文章内容：</th>
                     <td>
-                        <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/ueditor.config.js')}}"></script>
-                        <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/ueditor.all.min.js')}}"> </script>
-                        <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/lang/zh-cn/zh-cn.js')}}"></script>
+                        <link rel="stylesheet" type="text/css" href="{{asset('resources/org/simditor/styles/simditor.css')}}" />
+                        <script type="text/javascript" src="{{asset('resources/org/simditor/scripts/module.js')}}"></script>
+                        <script type="text/javascript" src="{{asset('resources/org/simditor/scripts/hotkeys.js')}}"></script>
+                        <script type="text/javascript" src="{{asset('resources/org/simditor/scripts/uploader.js')}}"></script>
+                        <script type="text/javascript" src="{{asset('resources/org/simditor/scripts/simditor.js')}}"></script>
 
-                        <script id="editor" type="text/plain" name="art_content" style="width: 860px;height:500px;"></script>
-
-                        <script type="text/javascript">
-                            // 实例化编辑器
-                            var ue = UE.getEditor('editor');
+                        <textarea id="editor" placeholder="" autofocus name="art_content"></textarea>
+                        <script>
+                            var editor = new Simditor({
+                                textarea: $('#editor')
+                            });
                         </script>
-
-                        <style>
-                            .edui-default{ line-height: 28px; }
-                            div.edui-combox-body,div.edui-button-body,div.edui-splitbutton-body
-                            { overflow: hidden; height:20px; }
-                            div.edui-box{overflow: hidden; height:22px;}
-                        </style>
                     </td>
                 </tr>
                 <tr>

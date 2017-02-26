@@ -1,0 +1,15 @@
+html, body {
+  background: #fafafa;
+  height: 100%;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+* {
+  margin: 0;
+  padding: 0;
+}

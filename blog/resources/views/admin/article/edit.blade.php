@@ -139,13 +139,26 @@
                 <tr>
                     <th><i class="require">*</i>文章内容：</th>
                     <td>
-                        <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/ueditor.config.js')}}"></script>
+                        <link rel="stylesheet" type="text/css" href="{{asset('resources/org/simditor/styles/simditor.css')}}" />
+
+                        {{--<script type="text/javascript" src="{{asset('resources/org/simditor/ueditor.config.js')}}/jquery.min.js"></script>--}}
+                        <script type="text/javascript" src="{{asset('resources/org/simditor/scripts/module.js')}}"></script>
+                        <script type="text/javascript" src="{{asset('resources/org/simditor/scripts/hotkeys.js')}}"></script>
+                        <script type="text/javascript" src="{{asset('resources/org/simditor/scripts/uploader.js')}}"></script>
+                        <script type="text/javascript" src="{{asset('resources/org/simditor/scripts/simditor.js')}}"></script>
+
+                        <textarea id="editor" placeholder="" autofocus name="art_content">{!!$field['art_content']!!}</textarea>
+                        <script>
+                            var editor = new Simditor({
+                                textarea: $('#editor')
+                            });
+                        </script>
+
+                        {{--<script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/ueditor.config.js')}}"></script>
                         <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/ueditor.all.min.js')}}"> </script>
                         <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/lang/zh-cn/zh-cn.js')}}"></script>
 
-                        <script id="editor" type="text/plain" name="art_content" style="width: 860px; height:500px;">
-                        	{!!$field['art_content']!!}
-                    	</script>
+                        <script id="editor" type="text/plain" name="art_content" style="width: 860px; height:500px;">{!!$field['art_content']!!}</script>
 
                         <script type="text/javascript">
                             // 实例化编辑器
@@ -157,7 +170,7 @@
                             div.edui-combox-body,div.edui-button-body,div.edui-splitbutton-body
                             { overflow: hidden; height:20px; }
                             div.edui-box{overflow: hidden; height:22px;}
-                        </style>
+                        </style>--}}
                     </td>
                 </tr>
                 <tr>

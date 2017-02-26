@@ -1,20 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="{{asset('resources/views/admin/style/css/ch-ui.admin.css')}}">
-	<link rel="stylesheet" href="{{asset('resources/views/admin/style/css/ch-ui.admin.css')}}">
-	<link rel="stylesheet" href="{{asset('resources/views/admin/style/font/css/font-awesome.min.css')}}">
-
-	<script type="text/javascript" src="{{asset('resources/views/admin/style/js/jquery.js')}}"></script>
-	<script type="text/javascript" src="{{asset('resources/views/admin/style/js/ch-ui.admin.js')}}"></script>
-	<script type="text/javascript" src="{{asset('resources/org/vue.js')}}"></script>
-
+    <title>{{Config::get('webConf.web_title')}}</title>
+    <meta name="keywords" content="{{Config::get('webConf.keywords')}}" />
+    <meta name="description" content="{{Config::get('webConf.description')}}" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="{{url('resources/views/home/css/reset.css')}}" />
+    <link rel="stylesheet" href="{{url('resources/views/home/css/index.css')}}" />
 </head>
-
 <body>
 
-@yield('content')
+<script type="text/javascript">
+    try{
+        function setFontsize() {
+            document.querySelector('html').style.fontSize = (document.body.clientWidth / 375 * 16 + 'px');
+        }
+        setFontsize();
+    }catch(e){
+        console.log(e);
+    }
+</script>
 
+<div class="container">
+
+    <!--header-->
+    <div class="header">
+        <div class="logo"><a href="/">ALoGY</a></div>
+        <div class="nav">
+            <ul>
+                @foreach($data as $k => $v)
+                    <li @if($k>4) class="hide" @endif><a href="{{$v['nav_url']}}">{{$v['nav_name']}}</a></li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+    <!--end header-->
+
+    @yield('content')
+
+</div>
 </body>
 </html>
