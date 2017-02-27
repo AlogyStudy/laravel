@@ -60,7 +60,7 @@ class IndexController extends Controller {
 	 * 电影页面
 	 */
 	public function movie() {
-        return view('home.weixin');
+        return view('home.movie');
 	}
 
     /**

@@ -1,5 +1,5 @@
 <?php return array (
-  'web_title' => 'BLOG_TITLE',
+  'web_title' => 'ALoGY-BLoG',
   'web_count' => '<script>
 var _hmt = _hmt || [];
 (function() {
@@ -14,5 +14,5 @@ var _hmt = _hmt || [];
   'keywords' => '博客，Web技术，前端，PHP，ES6，ES7，Vue，JavaScript，Node，Mysql，Express',
   'seo_title' => 'AL',
   'description' => '记录博客的WEB',
-  'copyright' => '',
+  'copyright' => 'theme  by Alogy - powered by Alogy',
 );

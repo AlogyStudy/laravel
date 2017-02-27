@@ -65,9 +65,9 @@
 
 
 		<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="1" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+		<div class="ds-thread" data-thread-key="/cate/23" data-title="{{Config::get('webConf.web_title')}}" data-url="{{url('/cate/23')}}"></div>
 		<!-- 多说评论框 end -->
-		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+		<!-- 多说公共JS代码 start -->
 		<script type="text/javascript">
             var duoshuoQuery = {short_name:"linxingzhang"};
             (function() {
@@ -81,7 +81,7 @@
 		</script>
 		<!-- 多说公共JS代码 end -->
 
-		<div class="coypright">theme  by Alogy - powered by Bitcron</div>
 
 	</div>
 @endsection
+

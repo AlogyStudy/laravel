@@ -3,7 +3,7 @@
 @section('content')
 	<link rel="stylesheet" href="{{url('resources/views/home/css/details.css')}}" />
 
-	<div class="details-wrap">
+	<div class="details-wrap fmt">
 
 		<div class="d-article">
 			<h2>{{$art['art_title']}}</h2>
@@ -36,7 +36,7 @@
 
 
 		<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="1" data-title="{{$art['art_title']}}" data-url="{{url('art/'). '/' . $art['art_id']}}"></div>
+		<div class="ds-thread" data-thread-key="{{'/art/' . $art['art_id']}}" data-title="{{$art['art_title']}}" data-url="{{url('art/'). '/' . $art['art_id']}}"></div>
 		<!-- 多说评论框 end -->
 		<!-- 多说公共JS代码 start -->
 		<script type="text/javascript">
@@ -51,7 +51,5 @@
             })();
 		</script>
 		<!-- 多说公共JS代码 end -->
-
-		<div class="coypright">theme  by Alogy - powered by Bitcron</div>
 
 @endsection

@@ -2,22 +2,22 @@
 
 @section('content')
     <div>
-        <div class="weixin-con">还未设计好页面，占个位</div>
+        <img src="{{url('resources/views/home/images/weixin.jpg')}}" class="weixin-img" />
+        <div class="wechat">Wechat</div>
     </div>
 @endsection
 
 <style>
     .header {
-        background: #fafafa !important;
+        display: none !important;
     }
-    .header a {
-        color: #111 !important;
+    .weixin-img {
+        border: 1px solid #fff;
     }
     body {
-        background: #111 !important;
+        background: #000 !important;
     }
-    .weixin-con {
+    .wechat {
         color: #fafafa;
     }
-
 </style>
