@@ -1,3 +1,7 @@
+
+/**
+分页
+ */
 .page_list {
     margin-top: 1rem;
     display: flex;
@@ -54,8 +58,6 @@
     color:#fff;
     cursor:default
 }
-
-
 
 .page_list ul li span {
     font-size: 15px;

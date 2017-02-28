@@ -10,9 +10,9 @@
 
 			<div class="art-c">{!! $art['art_content'] !!}</div>
 
-			<div class="info-d">
-				<span>时间 : {{date('Y-m-d', $art['art_time'])}}</span>
-				<span>阅读次数 : {{$art['art_view']}}</span>
+			<div class="info-d info-a">
+				<i></i><span>{{date('Y-m-d', $art['art_time'])}} </span>
+				<i></i><span>{{$art['art_view']}} </span>
 			</div>
 
 			<!-- JiaThis Button BEGIN -->
@@ -52,4 +52,5 @@
 		</script>
 		<!-- 多说公共JS代码 end -->
 
+	@include('home.public.footer')
 @endsection

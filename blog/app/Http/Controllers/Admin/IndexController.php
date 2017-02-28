@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Admin\User;
+use App\Http\Model\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -17,6 +17,7 @@ class IndexController extends CommonController {
      * 欢迎页
      */
     public function index() {
+
         return view('admin.index');
     }
 
@@ -48,6 +49,7 @@ class IndexController extends CommonController {
 
             $validator = Validator::make($input, $rules, $msg);
             if ($validator->passes()) {
+
                 // 对比原密码
 				$user = User::first();
                 $_password = Crypt::decrypt($user->user_pass);

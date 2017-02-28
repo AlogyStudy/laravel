@@ -2,6 +2,9 @@
 
 @section('content')
 	<link rel="stylesheet" href="{{url('resources/views/home/css/list.css')}}" />
+	<link rel="stylesheet" href="{{url('resources/views/home/css/editormd.min.css')}}" />
+	<link rel="stylesheet" href="{{url('resources/views/home/css/planeui.min.css')}}" />
+	<link rel="stylesheet" href="{{url('resources/views/home/css/md-index.css')}}" />
 
 	<div class="list-wrap">
 
@@ -24,29 +27,10 @@
 						<h1 class="title"><a href="{{url('art/'). '/' . $a['art_id']}}" target="_blank">{{$a['art_title']}}</a></h1>
 						<div class="post_body">
 							{!!$a['art_content']!!}
-							{{--<img src="{{$a['art_thumb']}}" alt="" />--}}
 						</div>
-						<script type="text/javascript">
-							var postBody = document.querySelector('.post_body');
-							var postBodyCon = postBody.querySelectorAll('*');
-							var html = '';
-							for (var i=0; i<7; i++) {
-							    if(postBodyCon[i].innerText) {
-							        if (i==7) {
-							            var str = postBodyCon[7].innerText;
-							            html += '<p>'+ str.substring(str.legnth-6) + '......' +'</p>';
-							            break;
-									}
-                                    html += '<p>' + postBodyCon[i].innerText +'</p>';
-
-								}
-							}
-							console.log(html);
-//                            postBody.innerHTML = html;
-						</script>
-						<div class="info">
-							<span>时间: {{date('Y-m-d', $a['art_time'])}}</span>
-							<span>阅读次数: {{$a['art_view']}}</span>
+						<div class="info info-a">
+							<i></i> <span>{{date('Y-m-d', $a['art_time'])}}</span>
+							<i></i> <span>{{$a['art_view']}}</span>
 						</div>
 					</div>
 				@endforeach
@@ -83,5 +67,7 @@
 
 
 	</div>
+
+	@include('home.public.footer')
 @endsection
 

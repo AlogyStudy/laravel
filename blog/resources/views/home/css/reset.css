@@ -13,3 +13,56 @@ a {
   margin: 0;
   padding: 0;
 }
+
+
+/****** 时间&浏览次数 start *******/
+
+.info-a {
+  line-height: 0.5rem;
+  margin-top: 0.2rem;
+  display: flex;
+}
+
+.info-a i{
+  width: 0.35rem;
+  height: 0.35rem;
+  background: tan;
+  display: inline-block;
+  margin-top: 6px;
+  margin-right: 6px;
+}
+.info-a span {
+  margin-right: 10px;
+}
+
+.info-a i:nth-of-type(1) {
+  background: url(../images/time.png) no-repeat;
+  background-size: cover;
+}
+.info-a i:nth-of-type(2) {
+  background: url(../images/browser.png) no-repeat;
+  background-size: cover;
+}
+
+/****** 时间&浏览次数 end *******/
+
+
+/*评论  start */
+#ds-reset .ds-weixin {
+  background-position: 0 -273px !important;
+}
+/*评论 end */
+
+
+
+/* start 版权*/
+.ds-thread {
+  margin-top: 1rem;
+}
+
+.coypright {
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}
+/*end 版权*/

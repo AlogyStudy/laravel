@@ -52,7 +52,7 @@ class LoginController extends CommonController {
      */
     public function quit() {
         session(['users' => null]);
-        return redirect('admin/login');
+        return redirect('admins/login');
     }
 
 

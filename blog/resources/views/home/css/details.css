@@ -1,11 +1,14 @@
 
+/**
+详情页
+ */
 .details-wrap {
     font-size: 16px;
     width: 1080px;
     margin: 1rem auto;
     text-align: left;
     padding-top: 50px;
-    font-family: "微软雅黑";
+    font-family: "Microsoft YaHei";
 }
 
 .d-article {
@@ -39,28 +42,44 @@
 
 .info-d {
     color: #9E9E9E;
-    line-height: 100px;
 }
 
 
 
 
-.ds-thread {
-    margin-top: 1rem;
+/*分享 start*/
+.jiathis_style_32x32 {
+    margin-top: 20px;
+}
+.jiathis_button_tsina span {
+    background: url('../images/weibo.png') center center no-repeat !important;
+    background-size: contain !important;
 }
 
-.coypright {
-    text-align: center;
+.jiathis_button_weixin span {
+    background: url('../images/wchart.png') center center no-repeat !important;
+    background-size: contain !important;
+}
+
+.jiathis_button_douban span {
+    background: url('../images/douban.png') center center no-repeat !important;
+    background-size: contain !important;
+}
+
+.jiathis_button_fb span {
+    background: url('../images/fb.png') center center no-repeat !important;
+    background-size: contain !important;
+}
+
+#jiathis_weixin_h3, #jiathis_webchat {
     font-size: 14px;
-    color: #333;
 }
 
+/*分享 end*/
 
 
 
-
-
-
+/*代码格式 start*/
 .fmt {
     line-height: 1.6;
     word-wrap: break-word
@@ -178,7 +197,8 @@
     background: none;
     font-size: 1em;
     overflow-wrap: normal;
-    white-space: inherit
+    white-space: inherit;
+    font-family: "Microsoft YaHei";
 }
 
 .fmt hr {
@@ -210,3 +230,4 @@
 .fmt table th {
     background: #f3f3f3
 }
+/*代码格式 end*/

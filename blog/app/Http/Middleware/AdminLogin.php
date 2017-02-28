@@ -4,8 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AdminLogin
-{
+class AdminLogin {
     /**
      * Handle an incoming request.
      *
@@ -17,7 +16,7 @@ class AdminLogin
     	
 			// 判断session中的登陆信息
 			if (!session('users')) {
-				return redirect('admin/login');
+				return redirect('admins/login');
 			}
       return $next($request);
     }

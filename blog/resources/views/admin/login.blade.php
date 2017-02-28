@@ -30,7 +30,7 @@
 				<li>
 					<input type="text" class="code focus" name="code" id="code"/>
 					<span><i class="fa fa-check-square-o"></i></span>
-					<img src="{{url('admin/code')}}" alt="" id="codes">
+					<img src="{{url('admins/code')}}" alt="" id="codes">
 				</li>
 				<li>
 					<input type="submit" value="立即登陆" id="submit" />
@@ -45,7 +45,7 @@
     // 点击再次请求验证码
     var ObjCodes = document.querySelector('#codes');
     ObjCodes.onclick = function() {
-        this.src = '{{url("admin/code")}}' + '?random=' + Math.random();
+        this.src = '{{url("admins/code")}}' + '?random=' + Math.random();
     };
 
     // 验证表单
