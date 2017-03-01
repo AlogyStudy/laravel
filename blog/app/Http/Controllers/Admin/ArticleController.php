@@ -29,11 +29,11 @@ class ArticleController extends CommonController {
      */
     public function store(){
 		$input = Input::except('_token');
-		
+
 		$input['art_time'] = time(); // 时间戳
-		
-		$input['cate_id'] = (int)$input['cate_id']; 
-		
+
+		$input['cate_id'] = (int)$input['cate_id'];
+
         // 验证规则
         $rules = [
             'art_title' => 'required',
@@ -52,7 +52,7 @@ class ArticleController extends CommonController {
 
         // 验证数据
         $validator = Validator::make($input, $rules, $msg);
-		
+
 		if ($validator->passes()) {
             // 入库
 			$res = Article::create($input);

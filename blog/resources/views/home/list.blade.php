@@ -2,9 +2,6 @@
 
 @section('content')
 	<link rel="stylesheet" href="{{url('resources/views/home/css/list.css')}}" />
-	<link rel="stylesheet" href="{{url('resources/views/home/css/editormd.min.css')}}" />
-	<link rel="stylesheet" href="{{url('resources/views/home/css/planeui.min.css')}}" />
-	<link rel="stylesheet" href="{{url('resources/views/home/css/md-index.css')}}" />
 
 	<div class="list-wrap">
 

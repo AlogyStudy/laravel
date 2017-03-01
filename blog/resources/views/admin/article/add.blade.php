@@ -79,14 +79,14 @@
                                     'swf'      : '{{asset("resources/org/uploadify/uploadify.swf")}}',
                                     'uploader' : '{{url('admin/upload')}}', // 上传路径
                                     'onUploadSuccess': function(file, data, response) {
-                                		// 上传成功
-                                    	if(response) {
-                                    		// 路径显示
-                                    		$('.art_thumb').val(data);
-                                    		// 图片显示
-                                    		$('#art_thumb_upload').attr('src', data);
-                                    		$('.art_thumb_wrap').show();
-                                    	}
+                                        // 上传成功
+                                        if(response) {
+                                            // 路径显示
+                                            $('.art_thumb').val(data);
+                                            // 图片显示
+                                            $('#art_thumb_upload').attr('src', data);
+                                            $('.art_thumb_wrap').show();
+                                        }
                                     }
                                 });
                             });
@@ -95,7 +95,7 @@
                             .uploadify{display: inline-block;}
                             .uploadify-button{border: none; border-radius:5px; margin-top:8px; background: #428bca;}
                             .uploadify:hover .uploadify-button {
-                            	background: #0F4880;
+                                background: #0F4880;
                             }
                             table.add_tab tr td span.uploadify-button-text{color: #FFF; margin:0;}
                         </style>
@@ -134,78 +134,13 @@
                 <tr>
                     <th><i class="require">*</i>文章内容：</th>
                     <td>
-                        {{--<link rel="stylesheet" type="text/css" href="{{asset('resources/org/simditor/styles/simditor.css')}}" />
-                        <script type="text/javascript" src="{{asset('resources/org/simditor/scripts/module.js')}}"></script>
-                        <script type="text/javascript" src="{{asset('resources/org/simditor/scripts/hotkeys.js')}}"></script>
-                        <script type="text/javascript" src="{{asset('resources/org/simditor/scripts/uploader.js')}}"></script>
-                        <script type="text/javascript" src="{{asset('resources/org/simditor/scripts/simditor.js')}}"></script>
+                        {{--// 引入编辑器代码--}}
+                        @include('editor::head')
 
-                        <textarea id="editor" placeholder="" autofocus name="art_content"></textarea>
-                        <script>
-                            var editor = new Simditor({
-                                textarea: $('#editor')
-                            });
-                        </script>--}}
-{{-----------------------------------------------------------------------------------------}}
-
-                        {{--<script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/ueditor.config.js')}}"></script>
-                        <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/ueditor.all.min.js')}}"> </script>
-                        <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/ueditor/lang/zh-cn/zh-cn.js')}}"></script>
-
-                        <script id="editor" type="text/plain" name="art_content" style="width: 860px; height:500px;"></script>
-
-                        <script type="text/javascript">
-                            // 实例化编辑器
-                            var ue = UE.getEditor('editor');
-                        </script>
-
-                        <style>
-                            .edui-default{ line-height: 28px; }
-                            div.edui-combox-body,div.edui-button-body,div.edui-splitbutton-body
-                            { overflow: hidden; height:20px; }
-                            div.edui-box{overflow: hidden; height:22px;}
-                        </style>--}}
-
-
-                        {{---------------------------------------------------------------------}}
-
-                        <link rel="stylesheet" type="text/css" href="{{asset('resources/org/editormd/css/editormd.min.css')}}" />
-                        <script type="text/javascript" charset="utf-8" src="{{asset('resources/org/editormd/editormd.min.js')}}"> </script>
-                        <div id="editormd">
-                            <textarea style="display:none;" name="art_content"></textarea>
+                        <div class="editor">
+                            <textarea id='myEditor'></textarea>
                         </div>
 
-                        <script>
-
-                            $(function() {
-                                var Editormd;
-                                Editormd = editormd("editormd", {
-                                    width: "90%",
-                                    height: 740,
-                                    path : '{{asset('resources/org/editormd/lib') . '/'}}',
-                                    theme : "dark",
-                                    previewTheme : "dark",
-                                    editorTheme : "pastel-on-dark",
-                                    markdown : md,
-                                    codeFold : true,
-                                    saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea
-                                    searchReplace : true,
-                                    htmlDecode : "style,script,iframe|on*",            // 开启 HTML 标签解析，为了安全性，默认不开启
-                                    emoji : true,
-                                    taskList : true,
-                                    tocm            : true,         // Using [TOCM]
-                                    tex : true,                   // 开启科学公式TeX语言支持，默认关闭
-                                    flowChart : true,             // 开启流程图支持，默认关闭
-                                    sequenceDiagram : true,       // 开启时序/序列图支持，默认关闭,
-                                    imageUpload : true,
-                                    imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-                                    imageUploadURL : "./php/upload.php",
-                                    onload : function() {
-                                        console.log('onload', this);
-                                    }
-                                });
-                            });
-                        </script>
                     </td>
                 </tr>
                 <tr>
