@@ -4,6 +4,9 @@
 
 @section('content')
 
+    {{--// 引入编辑器代码--}}
+    @include('editor::head')
+
     <!--面包屑导航 开始-->
     <div class="crumb_warp">
         <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
@@ -134,13 +137,9 @@
                 <tr>
                     <th><i class="require">*</i>文章内容：</th>
                     <td>
-                        {{--// 引入编辑器代码--}}
-                        @include('editor::head')
-
                         <div class="editor">
-                            <textarea id='myEditor'></textarea>
+                            <textarea id='myEditor' name="art_content"></textarea>
                         </div>
-
                     </td>
                 </tr>
                 <tr>

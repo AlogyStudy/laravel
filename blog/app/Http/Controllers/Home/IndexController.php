@@ -10,6 +10,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
+use EndaEditor;
+
 class IndexController extends Controller {
     
 	/**
@@ -26,6 +28,11 @@ class IndexController extends Controller {
 		$cate = Category::orderBy('cate_order')->get();
 		$art = Article::orderBy('art_time', 'desc')->paginate(2);
 
+		// markdown 解析成html
+        foreach ($art as $v) {
+            $v['art_content'] = EndaEditor::MarkDecode($v['attributes']['art_content']);
+        }
+
 		return view('home.list', compact('cate', 'art'));
 	}
 	
@@ -35,6 +42,7 @@ class IndexController extends Controller {
 	public function cate($cate_id) {
 		$cate = Category::orderBy('cate_order')->get();
 		$art = Article::where('cate_id', $cate_id)->orderBy('art_time', 'desc')->paginate(2);
+
 		return view('home.list', compact('cate', 'art'));
 	}
 
@@ -46,6 +54,10 @@ class IndexController extends Controller {
         $art = $art[0]['original'];
         // 更新浏览次数
         DB::update('update b_article set art_view = ? where art_id = ?',[$art['art_view']+=1, $art_id]);
+
+        // markdown 解析成html
+        $art['art_content'] = EndaEditor::MarkDecode($art['art_content']);
+
         return view('home.details', compact('art'));
 	}
 	

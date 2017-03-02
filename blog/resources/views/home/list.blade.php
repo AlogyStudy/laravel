@@ -2,6 +2,7 @@
 
 @section('content')
 	<link rel="stylesheet" href="{{url('resources/views/home/css/list.css')}}" />
+	<link rel="stylesheet" href="{{url('resources/views/home/css/code.css')}}" />
 
 	<div class="list-wrap">
 
@@ -16,7 +17,7 @@
 		</nav>
 		<!--end nav-->
 
-		<div class="contents">
+		<div class="contents fmt">
 			@if($art->count())
 				@foreach($art as $k => $a)
 					<div class="article">
@@ -61,7 +62,6 @@
             })();
 		</script>
 		<!-- 多说公共JS代码 end -->
-
 
 	</div>
 

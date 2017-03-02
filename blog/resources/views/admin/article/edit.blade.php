@@ -3,6 +3,8 @@
 @extends('admin.public.layout')
 
 @section('content')
+    {{--// 引入编辑器代码--}}
+    @include('editor::head')
 
     <!--面包屑导航 开始-->
     <div class="crumb_warp">
@@ -38,9 +40,9 @@
     <!--结果集标题与导航组件 结束-->
 
     <div class="result_wrap">
-        <form>
-        	{{--<input type="hidden" name="_method" value="put" />--}}
-            {{--{{csrf_field()}}--}}
+        <form action="{{url('admin/article/'.$field['cate_id'])}}" method="post">
+        	<input type="hidden" name="_method" value="put" />
+            {{csrf_field()}}
             <table class="add_tab">
                 <tbody>
                 <tr>
@@ -139,7 +141,9 @@
                 <tr>
                     <th><i class="require">*</i>文章内容：</th>
                     <td style="max-height: 500px;">
-
+                        <div class="editor">
+                            <textarea id='myEditor' name="art_content">{{$field['art_content']}}</textarea>
+                        </div>
                     </td>
                 </tr>
                 <tr>

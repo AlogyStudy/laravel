@@ -2,6 +2,7 @@
 
 @section('content')
 	<link rel="stylesheet" href="{{url('resources/views/home/css/details.css')}}" />
+	<link rel="stylesheet" href="{{url('resources/views/home/css/code.css')}}" />
 
 	<div class="details-wrap fmt">
 

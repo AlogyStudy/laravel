@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <link rel="stylesheet" href="{{url('resources/views/home/css/reset.css')}}" />
     <link rel="stylesheet" href="{{url('resources/views/home/css/index.css')}}" />
+    <script type="text/javascript" src="{{asset('resources/views/admin/style/js/jquery.js')}}"></script>
+
 </head>
 <body>
 

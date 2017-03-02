@@ -4,15 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Model\Article;
 use App\Http\Model\Category;
+use Illuminate\Contracts\Logging\Log;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+use YuanChao\Editor\EndaEditor;
 
 class ArticleController extends CommonController {
-
     /**
      * GET admin/article
      * 全部文章列表
@@ -117,7 +118,7 @@ class ArticleController extends CommonController {
     	$input = Input::except('_token', '_method');
 		// 更新
 		$res = Article::where('art_id', $art_id)->update($input);
-		
+
 		if (!$res) {
 			// 更新数据失败
 			return back()->with('errors', '文章更新失败');				
@@ -133,10 +134,17 @@ class ArticleController extends CommonController {
      */
     public function edit($art_id) {
         $field = Article::find($art_id);
-		
     	$cate = new Category();
 		$data = $cate->tree();
     	return view('admin.article.edit', compact('field','data'));
+    }
+
+    /**
+     * markdown图片上传
+     */
+    public function postUpload() {
+        $data = EndaEditor::uploadImgFile('uploads');
+        return json_encode($data);
     }
 
 }
