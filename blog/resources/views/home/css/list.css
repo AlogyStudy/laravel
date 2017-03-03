@@ -97,12 +97,13 @@
     color: #91a8d0;
 }
 
+
 .post_body p {
     display: block;
     line-height: 0.6rem;
     margin: 0.25rem 0;
 }
-.post_body img {
+.img, .post_body img {
     max-width: 3.2rem !important;
     text-align: left !important;
     display: flex !important;

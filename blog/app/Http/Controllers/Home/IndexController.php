@@ -52,6 +52,7 @@ class IndexController extends Controller {
 	public function article($art_id) {
         $art = Article::where('art_id', $art_id)->get();
         $art = $art[0]['original'];
+
         // 更新浏览次数
         DB::update('update b_article set art_view = ? where art_id = ?',[$art['art_view']+=1, $art_id]);
 
@@ -82,32 +83,4 @@ class IndexController extends Controller {
         return view('home.about');
 	}
 
-	/**
-     * 解析文章字符串
-     */
-	public function parseStr() {
-        //		foreach($art  as $v) {
-//		    preg_match_all('/<.p>(.+?)<.p>/', $v['art_content'], $out, PREG_SET_ORDER);
-//      }
-//
-//		$arrCotent = array();
-//		foreach($out as $k => $v) {
-//			$arrCotent[] = $v[1];
-//			if ($k > 6) {
-//				break;
-//			}
-//		}
-////		dd($arrCotent);
-//		$artC = array();
-//		foreach($arrCotent as $v) {
-//			if (preg_match_all('/[\x7f-\xff]+/', $v, $out)){
-//	   			for ($i=1; $i<count($out[0]); $i++) {
-//	   				if ($out[0][$i] == '宋体' || $out[0][$i] == '微软雅黑') {
-//	   					continue;
-//	   				}
-//	   				$artC = $out[0][$i];
-//	   			};
-//	   		}
-//		}
-    }
 }

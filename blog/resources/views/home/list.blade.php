@@ -23,6 +23,8 @@
 					<div class="article">
 						<link rel="stylesheet" type="text/css" href="{{asset('resources/org/simditor/styles/simditor.css')}}" />
 						<h1 class="title"><a href="{{url('art/'). '/' . $a['art_id']}}" target="_blank">{{$a['art_title']}}</a></h1>
+
+						<img src="{{$a['art_thumb']}}" class="img" style="margin-top: 20px;" />
 						<div class="post_body">
 							{!!$a['art_content']!!}
 						</div>
@@ -31,10 +33,27 @@
 							<i></i> <span>{{$a['art_view']}}</span>
 						</div>
 					</div>
+					<script>
+                        var Body = $('.post_body');
+                        var content = $('.post_body').find('p');
+
+                        // 处理显示前五条 和 省略号
+                        for(var i=0; i<Body.length; i++) {
+                            var _c = $(Body[i]).find('p');
+                            _c.splice(5, content.length);
+                            var str = $(_c[_c.length - 1]).html();
+                            str = str && str.substr(0, str.length - 6) + '......';
+                            console.log(_c, str);
+                            $(_c[_c.length - 1]).html(str);
+                            $(Body[i]).html(_c);
+						}
+
+					</script>
 				@endforeach
 			@else
 				<div class="article" style="text-align: center;">暂无文章</div>
 		@endif
+
 
 		<!--分页 start-->
 			<link rel="stylesheet" href="{{url('resources/views/home/css/paging.css')}}" />

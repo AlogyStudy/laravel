@@ -80,7 +80,7 @@
                                         '_token': '{{csrf_token()}}',
                                     },
                                     'swf'      : '{{asset("resources/org/uploadify/uploadify.swf")}}',
-                                    'uploader' : '{{url('admin/upload')}}', // 上传路径
+                                    'uploader' : '{{url('admin/uploads')}}', // 上传路径
                                     'onUploadSuccess': function(file, data, response) {
                                         // 上传成功
                                         if(response) {

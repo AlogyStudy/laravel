@@ -33,7 +33,7 @@ Route::group(['middleware' => ['web', 'admin.login'], 'prefix' => 'admin', 'name
     Route::any('pass', 'IndexController@pass');
 
 
-    Route::any('upload', 'CommonController@uploadImg');
+    Route::any('uploads', 'CommonController@uploadImg');
 
     // 分类资源路由
     Route::resource('category', 'CategoryController');
@@ -56,6 +56,11 @@ Route::group(['middleware' => ['web', 'admin.login'], 'prefix' => 'admin', 'name
     Route::any('configs/changecontent', 'ConfigController@changeContent');
     Route::get('configs/putfile', 'ConfigController@putFile');
     Route::resource('configs', 'ConfigController');
+
+    // markdown 图片上传
+    Route::controllers([
+        'upload'=>'UploadFileController'
+    ]);
 
 });
 

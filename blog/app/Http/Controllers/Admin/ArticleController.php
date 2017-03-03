@@ -11,7 +11,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
-use YuanChao\Editor\EndaEditor;
 
 class ArticleController extends CommonController {
     /**
@@ -76,7 +75,7 @@ class ArticleController extends CommonController {
     	$cate = new Category();
 		$data = $cate->tree();
 //		$data = Article::where('art_id', 0)->get();
-		return view('admin.article.add', compact('data'));
+		return view('admin.article.adcd', compact('data'));
     }
 
     /**
@@ -118,7 +117,6 @@ class ArticleController extends CommonController {
     	$input = Input::except('_token', '_method');
 		// 更新
 		$res = Article::where('art_id', $art_id)->update($input);
-
 		if (!$res) {
 			// 更新数据失败
 			return back()->with('errors', '文章更新失败');				
@@ -137,14 +135,6 @@ class ArticleController extends CommonController {
     	$cate = new Category();
 		$data = $cate->tree();
     	return view('admin.article.edit', compact('field','data'));
-    }
-
-    /**
-     * markdown图片上传
-     */
-    public function postUpload() {
-        $data = EndaEditor::uploadImgFile('uploads');
-        return json_encode($data);
     }
 
 }

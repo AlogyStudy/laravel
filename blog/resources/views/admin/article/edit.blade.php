@@ -40,7 +40,7 @@
     <!--结果集标题与导航组件 结束-->
 
     <div class="result_wrap">
-        <form action="{{url('admin/article/'.$field['cate_id'])}}" method="post">
+        <form action="{{url('admin/article/'.$field['art_id'])}}" method="post">
         	<input type="hidden" name="_method" value="put" />
             {{csrf_field()}}
             <table class="add_tab">
@@ -84,7 +84,7 @@
                                         '_token': '{{csrf_token()}}',
                                     },
                                     'swf'      : '{{asset("resources/org/uploadify/uploadify.swf")}}',
-                                    'uploader' : '{{url('admin/upload')}}', // 上传路径
+                                    'uploader' : '{{url('admin/uploads')}}', // 上传路径
                                     'onUploadSuccess': function(file, data, response) {
                                 		// 上传成功
                                     	if(response) {
