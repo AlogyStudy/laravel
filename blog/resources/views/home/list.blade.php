@@ -23,7 +23,6 @@
 					<div class="article">
 						<link rel="stylesheet" type="text/css" href="{{asset('resources/org/simditor/styles/simditor.css')}}" />
 						<h1 class="title"><a href="{{url('art/'). '/' . $a['art_id']}}" target="_blank">{{$a['art_title']}}</a></h1>
-
 						<img src="{{$a['art_thumb']}}" class="img" style="margin-top: 20px;" />
 						<div class="post_body">
 							{!!$a['art_content']!!}

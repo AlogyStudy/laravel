@@ -92,11 +92,15 @@
     font-size: 0.4rem;
     text-align: left;
     font-weight: normal;
+    margin: 0 !important;
 }
 .title a {
     color: #91a8d0;
 }
 
+.fmt a {
+    color: #91a8d0;
+}
 
 .post_body p {
     display: block;

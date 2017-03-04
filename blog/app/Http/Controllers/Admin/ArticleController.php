@@ -19,7 +19,7 @@ class ArticleController extends CommonController {
      */
     public function index() {
     	// 分页
-		$data = Article::orderBy('art_id', 'desc')->paginate(2);
+		$data = Article::orderBy('art_id', 'desc')->paginate(9);
 		return view('admin.article.index')->with('data', $data);
     }
 
@@ -75,7 +75,7 @@ class ArticleController extends CommonController {
     	$cate = new Category();
 		$data = $cate->tree();
 //		$data = Article::where('art_id', 0)->get();
-		return view('admin.article.adcd', compact('data'));
+		return view('admin.article.add', compact('data'));
     }
 
     /**

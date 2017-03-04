@@ -4,6 +4,7 @@
     <div>
         <img src="{{url('resources/views/home/images/weixin.jpg')}}" class="weixin-img" />
         <div class="wechat">Wechat</div>
+        <div><a href="/" class="BackHome">返回首页</a></div>
     </div>
 @endsection
 
@@ -19,5 +20,11 @@
     }
     .wechat {
         color: #fafafa;
+    }
+    .BackHome {
+        font-size: 30px;
+    }
+    .BackHome:hover {
+        color: #333;
     }
 </style>

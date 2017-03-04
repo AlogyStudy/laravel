@@ -1,4 +1,16 @@
-@extends('home.public.layout')
+@extends('home.public.detailsLayout')
+
+@section('title')
+{{$art['art_title']}}
+@endsection
+
+@section('keywords')
+{{$art['art_keywords']}}
+@endsection
+
+@section('description')
+	{{$art['art_description']}}
+@endsection
 
 @section('content')
 	<link rel="stylesheet" href="{{url('resources/views/home/css/details.css')}}" />

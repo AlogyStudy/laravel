@@ -26,11 +26,11 @@ class IndexController extends Controller {
 	 */
 	public function cateAll() {
 		$cate = Category::orderBy('cate_order')->get();
-		$art = Article::orderBy('art_time', 'desc')->paginate(2);
+		$art = Article::orderBy('art_time', 'desc')->paginate(9);
 
 		// markdown 解析成html
         foreach ($art as $v) {
-            $v['art_content'] = EndaEditor::MarkDecode($v['attributes']['art_content']);
+            $v['art_content'] = EndaEditor::MarkDecode($v['art_content']);
         }
 
 		return view('home.list', compact('cate', 'art'));
@@ -43,6 +43,10 @@ class IndexController extends Controller {
 		$cate = Category::orderBy('cate_order')->get();
 		$art = Article::where('cate_id', $cate_id)->orderBy('art_time', 'desc')->paginate(2);
 
+        // markdown 解析成html
+        foreach ($art as $v) {
+            $v['art_content'] = EndaEditor::MarkDecode($v['art_content']);
+        }
 		return view('home.list', compact('cate', 'art'));
 	}
 
